@@ -1,11 +1,21 @@
-var express 	= require('express');
-var app			= express();
-var cookieParser = require('cookie-parser');
-var bodyParser   = require('body-parser');
-var session 	 = require('express-session');
-var passport     = require('passport');
-var path         = require('path');
-var port    = process.env.PORT || 8080;
+var express 		= require('express');
+var app				= express();
+var cookieParser 	= require('cookie-parser');
+var bodyParser   	= require('body-parser');
+var session 	 	= require('express-session');
+var passport     	= require('passport');
+var path         	= require('path');
+var port    		= process.env.PORT || 8080;
+var mysql			= require('mysql');
+var connection		= mysql.createConnection({
+	host: 'localhost',
+	port: '3306',
+	user: 'root',
+	password: '1004love',
+	database: 'appUsers',
+});
+
+connection.connect();
 
 app.use(bodyParser.urlencoded({
 	extended: true
