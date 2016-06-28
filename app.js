@@ -12,7 +12,7 @@ var connection		= mysql.createConnection({
 	port: '3306',
 	user: 'root',
 	password: '1004love',
-	database: 'appUsers',
+	database: 'calc',
 });
 
 connection.connect();
@@ -46,11 +46,18 @@ app.get('/login', function (req, res) {
 });
 
 app.post('/webauth', function (req, res) {
-// console.log(req.query.value.email);
-	// res.send('hello world');
 	var array = [req.body];
 	var json = JSON.stringify(array);
 	res.send(json);
+
+	connection.query('SELECT * from xuser', function (err, rows, fields) {
+		if (!err) {
+			console.log(rows);
+		}
+		else {
+			console.log('must be received error!');
+		}
+	});
 });
 
 app.get('/signup', function (req, res) {
