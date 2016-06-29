@@ -11,7 +11,7 @@ var connection		= mysql.createConnection({
 	host: 'localhost',
 	port: '3306',
 	user: 'root',
-	password: '1004love',
+	password: '',
 	database: 'calc',
 });
 
@@ -46,22 +46,13 @@ app.get('/login', function (req, res) {
 });
 
 app.post('/webauth', function (req, res) {
-	var array = [req.body];
-	var json = JSON.stringify(array);
-	res.send(json);
-
-	connection.query('SELECT * from xuser', function (err, rows, fields) {
-		if (!err) {
-			console.log(rows);
-		}
-		else {
-			console.log('must be received error!');
-		}
-	});
+	var name = req.body.name;
+	var password = req.body.passwd;
+	console.log([name, password]);
 });
 
 app.get('/signup', function (req, res) {
-
+	res.sendFile(path.join(__dirname + '/signup.html'));
 });
 
 app.listen(port, function () {
