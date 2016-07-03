@@ -11,9 +11,11 @@ var connection		= mysql.createConnection({
 	host: 'localhost',
 	port: '3306',
 	user: 'root',
-	password: '',
-	database: 'calc',
+	password: '1004love',
+	database: 'app',
 });
+
+var queryManager	= require('./querymanager.js');
 
 connection.connect();
 
@@ -38,21 +40,33 @@ app.use(express.static(__dirname + '/'));
 
 // root
 app.get('/', function (req, res) {
-	res.sendFile(path.join(__dirname + '/index.html'));
+	res.sendFile(path.join(__dirname + '/view/index.html'));
 });
 
 app.get('/login', function (req, res) {
-	res.sendFile(path.join(__dirname + '/login.html'));
+	res.sendFile(path.join(__dirname + '/view/login.html'));
 });
 
 app.post('/webauth', function (req, res) {
 	var name = req.body.name;
 	var password = req.body.passwd;
-	console.log([name, password]);
+
+	queryManager.webAuth(name, password, function (err) {
+
+	});
 });
 
 app.get('/signup', function (req, res) {
-	res.sendFile(path.join(__dirname + '/signup.html'));
+	res.sendFile(path.join(__dirname + '/view/signup.html'));
+	queryManager.createAccount(connection, 'Yoon', 'Lee', 'pimp2you@gmail.com','1004love', '949-439-8241', function (err) {
+			if (err == 200) {
+				console.log('great!');
+			}
+	});
+});
+
+app.post('/signup', function (req, res) {
+	console.log(oink);
 });
 
 app.listen(port, function () {
