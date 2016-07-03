@@ -11,8 +11,13 @@ var connection		= mysql.createConnection({
 	host: 'localhost',
 	port: '3306',
 	user: 'root',
+<<<<<<< HEAD
 	password: '1004love',
 	database: 'app',
+=======
+	password: '',
+	database: 'calc',
+>>>>>>> d860d8e4ae4881f460c688b3f41ed5413703f290
 });
 
 var queryManager	= require('./querymanager.js');
