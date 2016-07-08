@@ -11,16 +11,11 @@ var connection		= mysql.createConnection({
 	host: 'localhost',
 	port: '3306',
 	user: 'root',
-<<<<<<< HEAD
-	password: '1004love',
-	database: 'app',
-=======
 	password: '',
-	database: 'calc',
->>>>>>> d860d8e4ae4881f460c688b3f41ed5413703f290
+	database: 'app',
 });
 
-var queryManager	= require('./querymanager.js');
+var queryManager	= require('./query.js');
 
 connection.connect();
 
@@ -53,17 +48,17 @@ app.get('/login', function (req, res) {
 });
 
 app.post('/webauth', function (req, res) {
-	var name = req.body.name;
+	var email = req.body.email;
 	var password = req.body.passwd;
 
-	queryManager.webAuth(name, password, function (err) {
-
+	queryManager.webAuth(connection, email, password, function (err) {
+		res.redirect('/');
 	});
 });
 
 app.get('/signup', function (req, res) {
 	res.sendFile(path.join(__dirname + '/view/signup.html'));
-	queryManager.createAccount(connection, 'Yoon', 'Lee', 'pimp2you@gmail.com','1004love', '949-439-8241', function (err) {
+	queryManager.createAccount(connection, 'Yoon', 'Lee', 'byobyohae@gmail.com','1004love', '949-439-8241', function (err) {
 			if (err == 200) {
 				console.log('great!');
 			}
@@ -71,7 +66,7 @@ app.get('/signup', function (req, res) {
 });
 
 app.post('/signup', function (req, res) {
-	console.log(oink);
+	console.log('oink');
 });
 
 app.listen(port, function () {
