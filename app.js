@@ -58,7 +58,7 @@ app.post('/webauth', function (req, res) {
 
 app.get('/signup', function (req, res) {
 	res.sendFile(path.join(__dirname + '/view/signup.html'));
-	queryManager.createAccount(connection, 'Yoon', 'Lee', 'byobyohae@gmail.com','1004love', '949-439-8241', function (err) {
+	queryManager.createAccount(connection, '', '', '','', '', function (err) {
 			if (err == 200) {
 				console.log('great!');
 			}
