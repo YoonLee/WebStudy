@@ -1,24 +1,28 @@
 {
-  "name": "web",
+  "name": "study",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Yoon Lee",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YoonLee/WebStudy.git"
+  },
+  "author": "YoonLee",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YoonLee/WebStudy/issues"
+  },
+  "homepage": "https://github.com/YoonLee/WebStudy#readme",
   "dependencies": {
-    "bcrypt": "^0.8.7",
-    "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
-    "express-session": "^1.13.0",
+    "express-session": "^1.14.0",
     "mysql": "^2.11.1",
-    "node-mysql": "^0.4.2",
-    "passport": "^0.3.2",
-    "passport-local": "^1.0.0"
+    "passport": "^0.3.2"
   }
 }
